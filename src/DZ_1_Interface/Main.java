@@ -1,4 +1,4 @@
-package DZ_1;
+package DZ_1_Interface;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

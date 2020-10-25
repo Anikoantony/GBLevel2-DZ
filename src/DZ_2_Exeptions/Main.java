@@ -1,4 +1,4 @@
-package DZ_2;
+package DZ_2_Exeptions;
 
 public class Main {
 

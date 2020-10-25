@@ -1,4 +1,4 @@
-package DZ_1;
+package DZ_1_Interface;
 
 public class Wall implements Prepatstvie {
     @Override
