@@ -17,8 +17,10 @@ public class TelSpravochnik {
  public void addPhone (String surname, String telefonNumber)
  {
   // если телефона нет для этой фамилии то добавлям в Множество СЭТ (для исключения дубля)
-  Set<String> set = new HashSet<>();
-  if (map.get(surname)==null)
+  Set<String> set = map.getOrDefault(surname,new HashSet<>());
+  set.add(telefonNumber);
+  map.put(surname,set);
+  /*if (map.get(surname)==null)
   {
       set.add(telefonNumber);
       map.put(surname, set);
@@ -31,7 +33,7 @@ public class TelSpravochnik {
    set.add(telefonNumber);
    map.put(surname,set);
    System.out.println("Добавлен доп. телефон для " + surname);
-  }
+  }*/
 
  }
 
