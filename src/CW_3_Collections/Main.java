@@ -9,6 +9,7 @@ public class Main {
         list.add(1);
         list.add(2);
         list.add(3);
+        list.add(1);
         System.out.println(list);
         list.addAll(0, Arrays.asList(1,2,5,6));
         list.remove((Integer) 2);
@@ -76,13 +77,98 @@ public class Main {
 
         setB.removeAll(setA);
         System.out.println("Вычитание" +setB);
+
+
+        long timeS, timeF;
+        timeS=System.currentTimeMillis();
+        Map<String,Integer> map = new HashMap<>();
+        map.put("Amur",6);
+        map.put("Barsik",2);
+        map.put("Amur",3);
+        map.put("Amur",4);
+        map.put("Barsik",3);
+        map.put("Amur",9);
+        timeF=System.currentTimeMillis();
+        System.out.println(map);
+        System.out.println(timeF-timeS);
+
+        timeS=System.currentTimeMillis();
+        Map<String,Integer> map2= new TreeMap<>();
+        map2.put("Amur",6);
+        map2.put("Barsik",2);
+        map2.put("Amur",3);
+        map2.put("Amur",4);
+        map2.put("Barsik",3);
+        map2.put("Amur",9);
+        System.out.println(map2);
+        timeF=System.currentTimeMillis();
+        System.out.println(timeF-timeS);
+
+
+        for(Map.Entry<String,Integer> entry:map.entrySet())
+        {
+            System.out.println(entry.getKey());
+            System.out.println(entry.getValue());
+        }
+
+        map2.forEach((k,v)->
+                {
+                    System.out.println(k);
+                    System.out.println(v);
+                }
+                );
+
+        Set<String> keys = map.keySet();
+        Collection<Integer> values = map.values();
+
+        System.out.println(keys + " и еще " + values);
+        System.out.println(map.get("Amur"));
+
+        String ex = " ", ex2="";
+        final String FINN = "ex";
+
+
+            Scanner inn = new Scanner(System.in);
+            while (!ex.equals(FINN))
+        {
+            System.out.println("ВВедите значение");
+            ex=inn.next();
+            System.out.println(ex);
+            System.out.println(map.get(ex));
+        }
+
+            Random rnd = new Random();
+
+            timeS=System.currentTimeMillis();
+
+            // Определение сколько раз 0 до 10 встречается в Мапе
+        Map<Integer,Integer> map3 = new HashMap<>();
+        for (int i = 0; i < 10000; i++) {
+            int num = rnd.nextInt(10);
+            Integer count = map3.getOrDefault(num,0);
+            map3.put(num,count+1);
+        /*    Integer count = map3.get(num);
+
+
+            if (count == null)
+            {
+                map3.put(num,1);
+            }
+            else {
+                 map3.put(num, count+1);
+                }*/
+        }
+            System.out.println(map3);
+        timeF=System.currentTimeMillis();
+        System.out.println(timeF-timeS);
     }
 
-public static void showIter (List a) {
+
+    public static void showIter (List a) {
     for (Object integer : a) {
         System.out.println(integer);
+        }
     }
-}
 
     }
 
