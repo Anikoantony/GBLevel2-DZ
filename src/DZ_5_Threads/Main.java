@@ -57,7 +57,7 @@ public class Main {
 
         // старт 1-ого и 2-ого потока через новый Runnable класс:
 
-        Thread t1 = new Thread(new Calc_thread(mas, mas.getA1(), 0,"Поток 1"));
+       /* Thread t1 = new Thread(new Calc_thread(mas, mas.getA1(), 0,"Поток 1"));
         Thread t2 = new Thread(new Calc_thread(mas, mas.getA2(), 1, "Поток 2"));
         t1.start();
         t2.start();
@@ -67,15 +67,41 @@ public class Main {
             t2.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
+        }*/
+        float[] a1 = mas.getA1();
+        float[] a2 = mas.getA2();
+        Thread t1 = new Thread(()->{
+                       for (int i = 0; i < a1.length ; i++) {
+               a1[i] = (float)(i * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
+        }});
 
-        mas.skleika();
+        Thread t2 = new Thread(()->{
+                       int h=mas.getH();
+            for (int i = 0; i < a2.length ; i++) {
+                a2[i] = (float)((h+i) * Math.sin(0.2f + (h+i) / 5) * Math.cos(0.2f + (h+i) / 5) * Math.cos(0.4f + (h+i) / 2));
+            }});
+
+        t1.start();
+        t2.start();
+
+        try {
+            t1.join();
+            t2.join();
+            System.out.println("Значение до склейки в 1-ом массиве: " + a1[1]);
+            System.out.println("Значение до склейки в 2-ом массиве: " + a2[1]);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        finally {
+            mas.skleika(a1,a2);
+        }
 
      /*   System.arraycopy(a1, 0, arr, 0, h);
         System.arraycopy(a2, 0, arr, h, h);*/
 
         time = System.currentTimeMillis() - start;
         System.out.println("Время заполнения массива новыми значениями в потоках " + time);
+        mas.getRndZnack();
 
     }
 }

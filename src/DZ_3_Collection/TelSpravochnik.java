@@ -17,6 +17,7 @@ public class TelSpravochnik {
  public void addPhone (String surname, String telefonNumber)
  {
   // если телефона нет для этой фамилии то добавлям в Множество СЭТ (для исключения дубля)
+  // Возвращает значение, соответствующее ключу key. Если такой ключ не существует — возвращает значение по умолчанию.
   Set<String> set = map.getOrDefault(surname,new HashSet<>());
   set.add(telefonNumber);
   map.put(surname,set);
