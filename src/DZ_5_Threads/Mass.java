@@ -1,7 +1,6 @@
 package DZ_5_Threads;
 
 public class Mass {
-
    private final Object mon = new Object();
    private int size = 10000000;
    private int h = size / 2;
@@ -17,6 +16,10 @@ public class Mass {
         return a2;
     }
 
+    public int getH() {
+        return h;
+    }
+
     public void setA1(float[] a1) {
         synchronized (mon) { this.a1 = a1; }
     }
@@ -25,7 +28,7 @@ public class Mass {
         synchronized (mon) { this.a2 = a2;}
     }
 
-    public void skleika()
+    public void skleika(float[] a1, float[] a2)
     {
         synchronized (mon) {
             System.arraycopy(a1, 0, arr, 0, h);
@@ -59,7 +62,7 @@ public class Mass {
 
         for (int i = 0; i < arr1.length ; i++)
         {
-            arr1[i] = (float)(arr1[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
+            arr1[i] = (float)(i * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
         }
 
         time = System.currentTimeMillis() - start;
@@ -79,6 +82,9 @@ public class Mass {
         this.h = size / 2;
     }
 
-
+    public void getRndZnack()
+    {
+        System.out.println("Значение 1-ого элемента - " + arr[1] + "; \n Значение  " + (h+1) + " элемента - " + arr[h+1]);
+    }
 
 }

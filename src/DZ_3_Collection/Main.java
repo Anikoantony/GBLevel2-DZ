@@ -21,6 +21,8 @@ public class Main {
         TelSpravochnik telSpravochnik = new TelSpravochnik();
         telSpravochnik.addPhone("Смирнов","7-926-33-44");
         telSpravochnik.addPhone("Смирнов","7-926-33-44");
+        telSpravochnik.addPhone("Смирнов","7-926-33-44");
+        telSpravochnik.addPhone("Смирнов","7-926-33-42");
         telSpravochnik.addPhone("Смирнов","7-910-10-21");
         telSpravochnik.addPhone("Иванов","7-916-55-33");
         telSpravochnik.addPhone("Иванов","7-954-34-86");
