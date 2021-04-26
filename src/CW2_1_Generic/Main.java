@@ -8,5 +8,6 @@ public class Main {
 
         Gen2<String,Integer> gen2 = new Gen2<>("a",1);
         System.out.println(gen2.getObj1()+gen2.getObj2());
+        System.out.println(gen2.getObj1()+gen2.getObj2());
     }
 }
