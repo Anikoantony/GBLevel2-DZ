@@ -5,4 +5,8 @@ public interface Jumpable {
     {
         System.out.println("Прыгает");
     };
+    default void jump2()
+    {
+        System.out.println("Прыгает");
+    };
 }
